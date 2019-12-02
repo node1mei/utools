@@ -1,2 +1,7 @@
-# utools-promodoro
-promodoro plugin for utools
+# utools 插件
+
+## 番茄钟
+
+简单的番茄工作法插件
+
+番茄及休息时间完成时会有弹窗通知。

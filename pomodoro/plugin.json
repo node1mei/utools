@@ -1,0 +1,16 @@
+{
+  "pluginName": "番茄钟",
+  "description": "uTools的番茄钟插件",
+  "main": "index.html",
+  "author": "uuz.vva",
+  "logo": "pomodoro.png",
+  "version": "0.0.1",
+  "preload":"preload.js",
+  "features": [
+    {
+      "code": "pomodoro",
+      "explain": "番茄钟",
+      "cmds": ["pomodoro", "番茄"]
+    }
+  ]
+}
