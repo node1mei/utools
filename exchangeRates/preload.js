@@ -1,0 +1,1 @@
+window.axios = require('./js/axios.min.js');
