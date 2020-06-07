@@ -8,7 +8,7 @@
   "logo": "logo.png",
   "homepage": "https://github.com/node1mei/utools",
   "pluginSetting": {
-    "height": 580
+    "height": 560
   },
   "features": [{
     "code": "rate",
