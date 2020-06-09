@@ -2,7 +2,7 @@
   "pluginName": "汇率转换",
   "description": "汇率转换插件，支持人民币、 美元、 英镑、 欧元、 澳元、加元、港币、泰铢、韩元、日元",
   "main": "index.html",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "author": "uuz.vva",
   "preload": "preload.js",
   "logo": "logo.png",
@@ -18,7 +18,7 @@
       {
         "type": "regex",
         "label": "汇率转换",
-        "match": "/^(人民币|CNY|¥|￥|美元|美金|USD|\\$|英镑|GBP|£|欧元|EUR|€|澳元|澳大利亚元|AUD|A\\$|加元|加拿大元|CAD|C\\$|港币|港元|HKD|HK|泰铢|泰国铢|THB|฿|韩元|KRW|₩|日元|JPY|J){1}\\d+(\\.\\d+)?/i",
+        "match": "/^(人民币|CNY|RMB|¥|￥|美元|美金|USD|\\$|英镑|GBP|£|欧元|EUR|€|澳元|澳大利亚元|AUD|A\\$|加元|加拿大元|CAD|C\\$|港币|港元|HKD|HK|泰铢|泰国铢|THB|฿|韩元|KRW|₩|日元|JPY|J){1}\\d+(\\.\\d+)?/i",
         "minLength": 2
       }
     ]

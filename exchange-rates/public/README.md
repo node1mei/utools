@@ -6,7 +6,7 @@
 
 默认数据来源: [Foreign exchange rates API](http://exchangeratesapi.io/)
 
-默认每天更新一次，实际汇率数据可能是两三天前的（默认数据源`exchangeratesapi`提供的数据更新不太及时）。
+默认每天更新一次，实际汇率数据可能是两三天前的（默认数据源*exchangeratesapi*提供的数据更新不太及时）。
 
 可以手动拉取最新数据(点击刷新按钮）。
 
@@ -14,7 +14,7 @@
 
 ## 支持币种及关键词(不区分大小写)
 
-- 人民币/CNY/¥
+- 人民币/CNY/RMB/¥
 - 美元/美金/USD/\$
 - 英镑/GBP/£
 - 欧元/EUR/€

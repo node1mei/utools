@@ -1,24 +1,13 @@
 # exchange-rates
 
-## Project setup
-```
-yarn install
-```
+## 说明
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
+汇率转换插件详细见[说明](./public/README.md)
 
-### Compiles and minifies for production
-```
-yarn build
-```
+## 更新
 
-### Lints and fixes files
-```
-yarn lint
-```
+### 2020/6/9
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+- 添加`RMB`词汇支持
+- 修复再次进入无法使用子输入框的BUG
+- 其他BUG修复

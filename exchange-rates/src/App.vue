@@ -52,7 +52,7 @@
       </el-container>
 
       <el-dialog title="设置" :visible.sync="settingFormVisible">
-        <el-form :model="form">
+        <el-form :model="form" size="small">
           <el-form-item label="选择数据来源" label-width="124px">
             <el-radio-group v-model="form.dataSource">
               <el-radio label="ExchangeRates"></el-radio>
@@ -113,7 +113,7 @@ export default {
         {
           name: '人民币(CNY)',
           key: 'CNY',
-          keywords: ['人民币', 'CNY', '¥', '￥'],
+          keywords: ['人民币', 'CNY', '¥', '￥', 'RMB'],
         }, {
           name: '美元(USD)',
           key: 'USD',
@@ -201,7 +201,7 @@ export default {
     this.juheAppKey = localStorage.getItem('juheAppKey');
     this.juheDataType = localStorage.getItem('juheDataType') || 'bankConversionPri';
     this.form.dataSource = '聚合数据';
-    this.form.juheAppKey = this.juheAppKey;
+    this.form.juheAppKey = this.juheAppKey || '';
     this.form.juheDataType = this.juheDataType;
 
     // 获取小数位设定
@@ -212,19 +212,16 @@ export default {
   },
   mounted() {
     /* global utools */
-    utools.onPluginReady(() => {
-      utools.setSubInput(({ text } )=> this.subIptChange(text), '输入币种金额');
-    });
     utools.onPluginEnter(({ payload }) => {
-      console.log(payload);
       this.subIptChange(payload);
+      utools.setSubInput(({ text }) => this.subIptChange(text), '输入币种金额');
     });
     
   },
   methods: {
     // 子输入框输入数值处理
     subIptChange: function(text) {
-      const re = /^(人民币|CNY|¥|￥|美元|美金|USD|\$|英镑|GBP|£|欧元|EUR|€|澳元|澳大利亚元|AUD|A\$|加元|加拿大元|CAD|C\$|港币|港元|HKD|HK|泰铢|泰国铢|THB|฿|韩元|KRW|₩|日元|JPY|J){1}\d+(\.\d+)?/i;
+      const re = /^(人民币|CNY|RMB|¥|￥|美元|美金|USD|\$|英镑|GBP|£|欧元|EUR|€|澳元|澳大利亚元|AUD|A\$|加元|加拿大元|CAD|C\$|港币|港元|HKD|HK|泰铢|泰国铢|THB|฿|韩元|KRW|₩|日元|JPY|J){1}\d+(\.\d+)?/i;
       if (re.test(text)) {
         const numIdx = text.search(/\d+(\.\d+)?/i);
         const currency = text.slice(0, numIdx);
@@ -290,18 +287,13 @@ export default {
               }
             });
             that.rates.CNY = 1;
-            this.saveData();
-            this.loading = false;
+            that.saveData();
+            that.loading = false;
           } else {
             that.$alert(`可能是聚合API KEY错误，无法获取数据，错误代码：${res.data.resultcode}`, '提示', {
               confirmButtonText: '确定',
-              callback: action => {
-                that.$message({
-                  type: 'info',
-                  message: `action: ${ action }`
-                });
-              }
             });
+            that.loading = false;
           }
         });
     },
@@ -330,15 +322,10 @@ export default {
 
     confirmSettingForm: function() {
       const that = this;
-      if (that.form.dataSource == '聚合数据' && that.form.juheAppKey.trim().length <= 0) {
+      if (that.form.dataSource == '聚合数据' && (that.form.juheAppKey == 'null' 
+      || that.form.juheAppKey.trim().length <= 0)) {
         that.$alert('选择聚合数据源后请输入聚合API', '提示', {
           confirmButtonText: '确定',
-          callback: action => {
-            that.$message({
-              type: 'info',
-              message: `action: ${ action }`
-            });
-          }
         });
       } else {
         that.dataSource = that.form.dataSource,
